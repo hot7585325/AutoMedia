@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://by32tdt1s6nyi"]
+
+[ext_resource type="Script" uid="uid://pdyy7bl7oll2" path="res://Main.gd" id="1_script"]
+
+[node name="Main" type="Control" unique_id=1679484166]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1950007691]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.1, 1)
+
+[node name="UI_Layer" type="CanvasLayer" parent="." unique_id=515098217]
+
+[node name="Editor" type="Control" parent="UI_Layer" unique_id=1095748292]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Split" type="HBoxContainer" parent="UI_Layer/Editor" unique_id=1017021838]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Left_Visual" type="VBoxContainer" parent="UI_Layer/Editor/Split" unique_id=844095354]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="UI_Layer/Editor/Split/Left_Visual" unique_id=721667093]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "【視覺輪播設定】"
+horizontal_alignment = 1
+
+[node name="PhotoDirBtn" type="Button" parent="UI_Layer/Editor/Split/Left_Visual" unique_id=198809385]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "1. 選擇照片資料夾"
+
+[node name="PathLabel" type="Label" parent="UI_Layer/Editor/Split/Left_Visual" unique_id=1437854104]
+layout_mode = 2
+text = "路徑: 未選擇"
+autowrap_mode = 3
+
+[node name="HBox" type="HBoxContainer" parent="UI_Layer/Editor/Split/Left_Visual" unique_id=1842794270]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI_Layer/Editor/Split/Left_Visual/HBox" unique_id=1466477966]
+layout_mode = 2
+text = "每張秒數: "
+
+[node name="IntervalSpin" type="SpinBox" parent="UI_Layer/Editor/Split/Left_Visual/HBox" unique_id=196036968]
+layout_mode = 2
+min_value = 1.0
+value = 5.0
+
+[node name="HSeparator" type="HSeparator" parent="UI_Layer/Editor/Split/Left_Visual" unique_id=1835595709]
+layout_mode = 2
+
+[node name="RunInfoLabel" type="Label" parent="UI_Layer/Editor/Split/Left_Visual" unique_id=585704886]
+layout_mode = 2
+text = "說明：
+點擊下方按鈕開始全螢幕播放。
+播放中 [雙擊滑鼠] 或 [ESC] 可退出。"
+autowrap_mode = 3
+
+[node name="StartVisualBtn" type="Button" parent="UI_Layer/Editor/Split/Left_Visual" unique_id=824020285]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "開始視覺輪播"
+
+[node name="VSeparator" type="VSeparator" parent="UI_Layer/Editor/Split" unique_id=1154282041]
+layout_mode = 2
+
+[node name="Right_Audio" type="VBoxContainer" parent="UI_Layer/Editor/Split" unique_id=77472091]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="TopBar" type="HBoxContainer" parent="UI_Layer/Editor/Split/Right_Audio" unique_id=172360958]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI_Layer/Editor/Split/Right_Audio/TopBar" unique_id=1848916071]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "【音訊控制台】"
+
+[node name="Spacer" type="Control" parent="UI_Layer/Editor/Split/Right_Audio/TopBar" unique_id=522201050]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AutoCheck" type="CheckButton" parent="UI_Layer/Editor/Split/Right_Audio/TopBar" unique_id=1077249557]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "啟用自動排程 (Auto)"
+
+[node name="AddFilesBtn" type="Button" parent="UI_Layer/Editor/Split/Right_Audio" unique_id=671422327]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "+ 匯入音訊檔案 (支援多選)"
+
+[node name="Header" type="HBoxContainer" parent="UI_Layer/Editor/Split/Right_Audio" unique_id=1908378320]
+layout_mode = 2
+
+[node name="L1" type="Label" parent="UI_Layer/Editor/Split/Right_Audio/Header" unique_id=795023968]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "檔名"
+
+[node name="L2" type="Label" parent="UI_Layer/Editor/Split/Right_Audio/Header" unique_id=812052987]
+layout_mode = 2
+text = "時 : 分"
+
+[node name="L3" type="Label" parent="UI_Layer/Editor/Split/Right_Audio/Header" unique_id=171228968]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "控制"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="UI_Layer/Editor/Split/Right_Audio" unique_id=825953815]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AudioListContainer" type="VBoxContainer" parent="UI_Layer/Editor/Split/Right_Audio/Scroll" unique_id=1479996721]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="RuntimeVisual" type="Control" parent="UI_Layer" unique_id=976199921]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackBG" type="ColorRect" parent="UI_Layer/RuntimeVisual" unique_id=1898832096]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PhotoRect" type="TextureRect" parent="UI_Layer/RuntimeVisual" unique_id=1062600037]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=958244572]
+
+[node name="PhotoTimer" type="Timer" parent="." unique_id=643642925]
+
+[node name="SystemTimer" type="Timer" parent="." unique_id=1617705186]
+autostart = true
+
+[node name="PhotoDialog" type="FileDialog" parent="." unique_id=1747685796]
+title = "Open a Directory"
+initial_position = 2
+size = Vector2i(600, 400)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+
+[node name="AudioDialog" type="FileDialog" parent="." unique_id=25821708]
+title = "Open File(s)"
+initial_position = 2
+size = Vector2i(600, 400)
+ok_button_text = "Open"
+file_mode = 1
+access = 2
+filters = PackedStringArray("*.mp3 ; MP3 Files")
