@@ -126,14 +126,23 @@ func _create_audio_row(path: String, saved_time = null, saved_loop = false):
 	# 1. 儲存路徑 (隱藏數據)
 	row.set_meta("file_path", path)
 	
-	# 2. 刪除按鈕
+# 2. 刪除按鈕 (修改版)
 	var del_btn = Button.new()
 	del_btn.text = "X"
 	del_btn.custom_minimum_size.x = 30
+	# --- 修改開始 ---
 	del_btn.pressed.connect(func(): 
+		# 關鍵步驟 1: 先立刻從容器中「移除」這個節點
+		# 如果只用 queue_free，它在當前影格還會算在容器內，存檔會存到錯的
+		audio_list_container.remove_child(row)
+		
+		# 關鍵步驟 2: 標記釋放記憶體
 		row.queue_free()
-		# 稍後存檔
+		
+		# 關鍵步驟 3: 立即執行存檔，這樣下次打開就不見了
+		save_config()
 	)
+	# --- 修改結束 ---
 	row.add_child(del_btn)
 	
 	# 3. 檔名顯示
@@ -189,6 +198,7 @@ func _create_audio_row(path: String, saved_time = null, saved_loop = false):
 		if audio_player.playing and audio_player.get_meta("current_row") == row:
 			audio_player.stream_paused = not audio_player.stream_paused
 	)
+
 
 func _play_row_audio(row: Control):
 	var path = row.get_meta("file_path")
